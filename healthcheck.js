@@ -25,19 +25,27 @@ const { ApiPromise } = require('@polkadot/api');
 const typedefs = require('@phala/typedefs').khalaDev;
 
 console.warn = function() {}
+console.error = function() {}
 
-(async() => {
+async function main() {
     let endpoint = `${argv["protocol"]}://${argv["host"]}`
     if (argv["port"] !== '') {
         endpoint = `${endpoint}:${argv["port"]}`
     }
 
     const provider = new HttpProvider(endpoint);
-    const api = await ApiPromise.create({
+    const api = new ApiPromise({
         provider: provider,
         types: typedefs
-    })
+    });
 
+    await api.isReadyOrError.catch(error => {
+        console.log(JSON.stringify({
+            error: error.toString()
+        }));
+        process.exit(1);
+    })
+    
     const onChainTimestamp = (await api.query.timestamp.now()).toNumber();
     const localTimestamp = Date.now();
     const gapInMinutes = (localTimestamp - onChainTimestamp) / 1000 / 60;
@@ -50,5 +58,7 @@ console.warn = function() {}
         gapInMinutes,
         headBlockNumber
     }))
-    process.exit(0)
-})().catch(console.error).finally(() => process.exit(1));
+    process.exit(0);
+}
+
+main();
