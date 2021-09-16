@@ -6,7 +6,8 @@
 ## Usage
 
 - Install NodeJS and Yarn
-- `git clone`
+- `git clone https://github.com/Phala-Network/khala-ops-healthcheck.git`
+- `cd khala-ops-healthcheck`
 - `yarn`
 - `node healthcheck.js -h 127.0.0.1 -p 9933`
 
