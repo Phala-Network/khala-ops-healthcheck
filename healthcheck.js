@@ -24,6 +24,8 @@ const { HttpProvider } = require('@polkadot/rpc-provider/http');
 const { ApiPromise } = require('@polkadot/api');
 const typedefs = require('@phala/typedefs').khalaDev;
 
+console.warn = function() {}
+
 (async() => {
     let endpoint = `${argv["protocol"]}://${argv["host"]}`
     if (argv["port"] !== '') {
