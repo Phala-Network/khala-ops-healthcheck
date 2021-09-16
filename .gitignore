@@ -1,0 +1,29 @@
+# JetBrains Junk
+.idea
+*.iml
+CMakeLists.txt
+
+# NodeJS
+**/node_modules
+**/.env
+
+# Tmp
+**/tmp
+
+# Trash
+**/*.log
+
+*.swp
+**/._*
+**/.criterion/
+.vscode
+.DS_Store
+nohup.out
+rls*.log
+*.orig
+*.rej
+**/wip/*.stderr
+*.pyc
+*.swo
+*.bk
+*~
