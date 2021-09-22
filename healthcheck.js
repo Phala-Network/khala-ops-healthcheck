@@ -56,8 +56,9 @@ async function main() {
         onChainTimestamp,
         localTimestamp,
         gapInMinutes,
-        headBlockNumber
-    }))
+        headBlockNumber,
+        endpoint
+    }));
     process.exit(0);
 }
 
